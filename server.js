@@ -18,6 +18,7 @@ var app = express();
 app.get('/api/users', function(req, res) {
     fetchUsers().then(function(users) {
         console.log('Fetched %s users', users.length);
+        res.header('Access-Control-Allow-Origin', '*');
         res.send(JSON.stringify(users.map(function(user) {
             return {
                 name: user.name,
